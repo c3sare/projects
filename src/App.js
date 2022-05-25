@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import Memory from './components/projects/Memory';
+import Calculator from './components/projects/Calculator';
+import TicTacToe from './components/projects/TicTacToe';
+import ProjectBoardWithButtons from './components/ProjectBoardWithButtons';
 
-function App() {
+const App = () => {
+
+  const projects = [
+    {
+      name: 'Gra w pamięć',
+      component: <Memory/>
+    },
+    {
+      name: 'Kalkulator',
+      component: <Calculator/>
+    },
+    {
+      name: 'Gra w kółko i krzyżyk',
+      component: <TicTacToe/>
+    }
+  ];
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <ProjectBoardWithButtons
+        projects={projects}
+      />
     </div>
-  );
+  )
 }
 
 export default App;

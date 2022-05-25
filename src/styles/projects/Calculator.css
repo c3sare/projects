@@ -1,0 +1,114 @@
+* {
+    box-sizing:border-box;
+}
+
+.calculator {
+    width: 250px;
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, 0.4);
+    margin: 0 auto;
+    border-radius: 15px;
+    padding: 16px 8px;
+    margin: 25px auto;
+}
+
+.calculator span {
+    display: block;
+    text-align: right;
+    color: grey;
+}
+
+.calculator p {
+    text-align: right;
+    font-size: 20px;
+    padding: 0 5px;
+    margin: 0;
+}
+
+.calculator .nums {
+    display: inline-block;
+    width: 75%;
+    height: 100%;
+}
+
+.calculator .end {
+    width: 25%;
+}
+
+.calculator .clear {
+    float: none;
+}
+
+.calculator .end button {
+    width: calc(100% - 8px);
+    height: calc(100% - 8px);
+}
+
+.calculator .scoreBox {
+    width: 100%;
+}
+
+.calculator .scoreBox p {
+    width: 75%;
+    display: inline-block;
+    background-color: rgba(0, 0, 0, 0.02);
+    padding: 12px;
+    font-size: 14px;
+    border-radius: 5px;
+}
+
+.calculator .scoreBox button {
+    display: inline-block;
+}
+
+.calculator .secondScore {
+    display: flex;
+    justify-content: flex-end;
+    height: 22px;
+}
+
+.calculator button {
+  background-color: #FFFFFF;
+  border: 1px solid rgb(209,213,219);
+  border-radius: .5rem;
+  box-sizing: border-box;
+  color: #111827;
+  font-family: "Inter var",ui-sans-serif,system-ui,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+  font-size: .875rem;
+  font-weight: 600;
+  line-height: 1.25rem;
+  padding: .75rem 1rem;
+  text-align: center;
+  text-decoration: none #D1D5DB solid;
+  text-decoration-thickness: auto;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: calc(25% - 8px);
+  margin: 4px;
+}
+
+.calculator button:hover,
+.calculator button.active {
+  background-color: rgb(249,250,251);
+}
+
+.calculator button:focus {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
+.calculator button:focus-visible {
+  box-shadow: none;
+}
+
+.calculator .nums button {
+    width: calc(33.33% - 8px);
+}
+
+.calculator .boxNumsReturn {
+    display: flex;
+    height: 100%;
+}

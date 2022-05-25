@@ -1,0 +1,87 @@
+.Memory .container {
+  width: 100vw;
+  max-width: calc(400px + 16px);
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+.Memory h5 {
+  text-align: center;
+}
+
+.Memory button {
+  background-color: rgba(0, 255, 64, 0.281);
+  padding: 8px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  font-size: 14px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 1px black;
+  border-radius: 15px;
+  margin: 5px auto;
+}
+
+.Memory .endBox {
+  position: absolute;
+  width: calc(100% - 8px);
+  height: calc(100% - 8px);
+  top: 4px;
+  left: 4px;
+  background-color: rgba(0, 255, 64, 0.281);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  color: black;
+  font-size: 25px;
+}
+
+.Memory .box.good {
+  background-color: rgba(0, 255, 64, 0.281);
+}
+
+.Memory .box img {
+  display: block;
+  width: 80%;
+  height:fit-content;
+  user-select: none;
+}
+
+.Memory .box {
+  background-color: #FFFFFF;
+  border: 1px solid rgb(209,213,219);
+  border-radius: .5rem;
+  box-sizing: border-box;
+  color: #111827;
+  font-family: "Inter var",ui-sans-serif,system-ui,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+  font-size: .875rem;
+  font-weight: 600;
+  line-height: 1.25rem;
+  padding: .75rem 1rem;
+  text-align: center;
+  text-decoration: none #D1D5DB solid;
+  text-decoration-thickness: auto;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: calc(25% - 8px);
+  margin: 4px;
+  height: calc(25vw - 4px);
+  max-height: 100px;
+  max-width: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Memory .box:hover:not(.good) {
+  background-color: rgb(249,250,251);
+}
+
+.Memory .box:not(.good) {
+  cursor: pointer;
+}

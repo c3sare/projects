@@ -4,17 +4,19 @@ import { useState } from "react";
 
 const ProjectBoardWithButtons = ({projects}) => {
     const [currentAppIndex, setCurrentAppIndex] = useState(
-        projects[localStorage.getItem('lastApp')] ? localStorage.getItem('lastApp') : 0
+        projects[Number(localStorage.getItem('lastApp'))] ? Number(localStorage.getItem('lastApp')) : 0
     )
     const [currentProject, setCurrentProject] = useState(
-        projects[localStorage.getItem('lastApp')]?.component ||
+        projects[Number(localStorage.getItem('lastApp'))]?.component ||
         projects[0]?.component ||
         null
     );
-    const [showMenu, setShowMenu] = useState(false);
+    const [showMenu, setShowMenu] = useState(localStorage.getItem("showMenu") ? Boolean(Number(localStorage.getItem("showMenu"))) : false);
 
     const handleToggleMenu = () => {
-        setShowMenu(!showMenu);
+        const switchMenu = !showMenu;
+        setShowMenu(switchMenu);
+        localStorage.setItem("showMenu", switchMenu ? 1 : 0);
     }
 
     const handleSetProject = (index, component) => {

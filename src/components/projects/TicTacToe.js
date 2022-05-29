@@ -35,6 +35,7 @@ const TicTacToe = () => {
         setFields(fields.map(_item => ''));
         setEndGame(false);
         setWinner('');
+        setCurrentPlayer('o');
         setWinnerPositions([]);
     }
 

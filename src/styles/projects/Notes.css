@@ -1,0 +1,92 @@
+.Notes > button {
+  display: block;
+  margin: 0 auto;
+}
+
+.Notes .container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.Notes .container .note {
+  max-width: 250px;
+  width: 100%;
+  min-height: 250px;
+  background-color: bisque;
+  margin: 15px;
+}
+
+.Notes .container .note > input {
+  width: 100%;
+  border: none;
+  border-radius: 0;
+  margin: 0;
+  padding: 10px;
+  font-weight: 700;
+  font-size: 15px;
+  background-color: rgba(255, 255, 255, 0.15);
+  border-bottom: 1px solid gainsboro;
+}
+
+.Notes .container .note > textarea {
+  width: 100%;
+  height: calc(100% - 74px);
+  border: none;
+  margin: 0;
+  padding: 5px 10px;
+  border-radius: 0;
+  background-color: rgba(255, 255, 255, 0.15);
+  resize: none;
+}
+
+.Notes input:focus-visible,
+.Notes textarea:focus-visible {
+  outline: none;
+}
+
+.Notes .noteMenu {
+  text-align: right;
+  padding: 5px 0;
+  border-bottom: 1px solid gainsboro;
+}
+
+.Notes .note > .title {
+  width: 100%;
+  margin: 0;
+  padding: 9px 10px;
+  font-weight: 700;
+  font-size: 15px;
+  border-bottom: 1px solid gainsboro;
+}
+
+.Notes .note > .text {
+  width: 100%;
+  height: calc(100% - 74px);
+  margin: 0;
+  padding: 5px 10px;
+  font-size: 12px;
+}
+
+.Notes .noteMenu button {
+  border: none;
+  border-radius: 0;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.Notes ::-webkit-scrollbar {
+  width: 5px;
+}
+
+.Notes ::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.Notes ::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+.Notes ::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}

@@ -16,7 +16,9 @@ const Notes = () => {
                 id: prev.length === 0 ? 1 : prev[prev.length-1].id+1,
                 title: "",
                 text: "",
-                edit: false
+                edit: false,
+                color: '#ffe4c4',
+                textColor: '#000000'
             }];
 
             localStorage.setItem("notes", JSON.stringify(JSON.parse(JSON.stringify(newState)).filter(item => item).map(item => {
@@ -67,6 +69,8 @@ const Notes = () => {
                         item.title = editedObject.title;
                         item.text = editedObject.text;
                         item.edit = false;
+                        item.color = editedObject.color;
+                        item.textColor = editedObject.textColor;
                     }
                     return item;
                 });
@@ -94,11 +98,51 @@ const Notes = () => {
             <button onClick={handleAddNote}>Dodaj notatkę</button>
             <div className="container">
                 {notes.map(note => (
-                    <div className="note" key={note.id}>
+                    <div
+                        className="note"
+                        key={note.id}
+                        style={
+                            editedNotes.find(item => item.id === note.id) ?
+                                {
+                                    backgroundColor: editedNotes.find(item => item.id === note.id).color,
+                                }
+                                :
+                                {
+                                    backgroundColor: note.color,
+                                    color: note.textColor
+                                }
+                        }
+                    >
                         <div className="noteMenu">
                             {
                                 note.edit ?
                                     <>
+                                        <input
+                                            type="color"
+                                            value={editedNotes.find(item => item.id === note.id).textColor}
+                                            onChange={e => setEditedNotes(prev => {
+                                                const newState = [...prev];
+                                                return newState.map(item => {
+                                                    if(item.id === note.id) {
+                                                        item.textColor = e.target.value;
+                                                    }
+                                                    return item;
+                                                });
+                                            })}
+                                        />
+                                        <input
+                                            type="color"
+                                            value={editedNotes.find(item => item.id === note.id).color}
+                                            onChange={e => setEditedNotes(prev => {
+                                                const newState = [...prev];
+                                                return newState.map(item => {
+                                                    if(item.id === note.id) {
+                                                        item.color = e.target.value;
+                                                    }
+                                                    return item;
+                                                });
+                                            })}
+                                        />
                                         <button onClick={() => handleCancelEdit(note.id)}>
                                             <img width="20px" height="20px" alt="Anuluj" src="/images/icons/cancel.svg"/>
                                         </button>
@@ -120,6 +164,7 @@ const Notes = () => {
                                 <input
                                     type="text"
                                     placeholder="Tytuł"
+                                    style={{color: editedNotes.find(item => item.id === note.id).textColor}}
                                     value={editedNotes.find(item => item.id === note.id).title}
                                     onChange={(e) => {
                                         setEditedNotes(prev => {
@@ -135,6 +180,7 @@ const Notes = () => {
                                 />
                                 <textarea
                                     placeholder="Treść"
+                                    style={{color: editedNotes.find(item => item.id === note.id).textColor}}
                                     value={editedNotes.find(item => item.id === note.id).text}
                                     onChange={(e) => {
                                         setEditedNotes(prev => {

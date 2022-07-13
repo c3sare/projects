@@ -1,28 +1,30 @@
 import '../styles/ProjectBoardWithButtons.css';
 import { useState } from "react";
+import { Project } from "../App";
 
 
-const ProjectBoardWithButtons = ({projects}) => {
-    const [currentAppIndex, setCurrentAppIndex] = useState(
+const ProjectBoardWithButtons = (props:{projects:Project[]}) => {
+    const {projects} = props;
+    const [currentAppIndex, setCurrentAppIndex] = useState<number>(
         projects[Number(localStorage.getItem('lastApp'))] ? Number(localStorage.getItem('lastApp')) : 0
     )
-    const [currentProject, setCurrentProject] = useState(
+    const [currentProject, setCurrentProject] = useState<JSX.Element>(
         projects[Number(localStorage.getItem('lastApp'))]?.component ||
         projects[0]?.component ||
         null
     );
-    const [showMenu, setShowMenu] = useState(localStorage.getItem("showMenu") ? Boolean(Number(localStorage.getItem("showMenu"))) : false);
+    const [showMenu, setShowMenu] = useState<1 | 0 | true | false>(localStorage.getItem("showMenu") ? Boolean(Number(localStorage.getItem("showMenu"))) : false);
 
     const handleToggleMenu = () => {
         const switchMenu = !showMenu;
         setShowMenu(switchMenu);
-        localStorage.setItem("showMenu", switchMenu ? 1 : 0);
+        localStorage.setItem("showMenu", String(switchMenu ? 1 : 0));
     }
 
-    const handleSetProject = (index, component) => {
+    const handleSetProject = (index:number, component:JSX.Element) => {
         setCurrentProject(component);
         setCurrentAppIndex(index);
-        localStorage.setItem('lastApp', index);
+        localStorage.setItem('lastApp', String(index));
     }
 
     return (

@@ -1,14 +1,21 @@
 import '../../styles/projects/Memory.css';
 import {useEffect, useRef, useState} from 'react';
 
-function shuffleArray(array) {
+interface BoardElement {
+  id: number;
+  img: string;
+  flip: boolean;
+  good: boolean;
+}
+
+function shuffleArray(array:BoardElement[]) {
   for (let i = array.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [array[i], array[j]] = [array[j], array[i]];
   }
 }
 
-const data = [];
+const data:BoardElement[] = [];
 
 for(let i=0; i<8;i++) {
   data.push({id: i, img: `/images/${i+1}.png`, flip: false, good: false});
@@ -18,26 +25,26 @@ for(let i=0; i<8;i++) {
 shuffleArray(data);
 
 const Memory = () => {
-  const [state, setState] = useState([...data]);
-  const block = useRef(false);
-  const moves = useRef(null);
-  const interval = useRef(null);
-  const time = useRef(null);
-  const [firstClick, setFirstClick] = useState(false);
+  const [state, setState] = useState<BoardElement[]>([...data]);
+  const block = useRef<boolean>(false);
+  const moves = useRef<null | HTMLSpanElement>(null);
+  const interval:{current: NodeJS.Timeout | null} = useRef(null);
+  const time = useRef<null | HTMLSpanElement>(null);
+  const [firstClick, setFirstClick] = useState<boolean>(false);
 
   useEffect(() => {
     if(firstClick)
       interval.current = setInterval(() => {
-        time.current.textContent = Number(time.current.textContent)+1
+        time.current!.textContent = String(Number(time.current!.textContent)+1)
       }, 1000);
 
-    return () => clearInterval(interval.current);
+    return () => clearInterval(interval.current!);
   }, [firstClick])
 
   useEffect(() => {
     const boxes = state.filter(item => item.flip);
     if(boxes.length === 2) {
-      moves.current.textContent = Number(moves.current.textContent)+1;
+      moves.current!.textContent = String(Number(moves.current!.textContent)+1);
       if(boxes[0].img === boxes[1].img) {
         setState(prev => {
           const newState = [...prev];
@@ -65,11 +72,11 @@ const Memory = () => {
     }
   }, [state]);
 
-  const handleClickBox = (id) => {
+  const handleClickBox = (id:number) => {
     if(!firstClick) setFirstClick(true);
     if(
       state.filter(item => item.flip).length < 2 &&
-      !state.find(item => item.id === id).good
+      !state.find(item => item.id === id)!.good
     )
     if(block.current === false) {
       setState(prevState => {
@@ -85,20 +92,20 @@ const Memory = () => {
   const handleResetGame = () => {
     shuffleArray(data);
     setFirstClick(false);
-    moves.current.textContent = 0;
-    time.current.textContent = 0;
+    moves.current!.textContent = "0";
+    time.current!.textContent = "0";
     setState([...data.map(item => {
       item.good = false;
       return item;
     })]);
-    clearInterval(interval.current);
+    clearInterval(interval.current!);
     interval.current = setInterval(() => {
-      time.current.textContent = Number(time.current.textContent)+1
+      time.current!.textContent = String(Number(time.current!.textContent)+1)
     }, 1000)
   }
 
   if(state.filter(item => !item.good).length === 0) {
-    clearInterval(interval.current);
+    clearInterval(interval.current!);
   }
 
   return (

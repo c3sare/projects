@@ -5,9 +5,14 @@ import Notes from './components/projects/Notes';
 
 import ProjectBoardWithButtons from './components/ProjectBoardWithButtons';
 
+export interface Project {
+  name: string;
+  component: JSX.Element;
+}
+
 const App = () => {
 
-  const projects = [
+  const projects:Project[] = [
     {
       name: "Gra w pamięć",
       component: <Memory/>

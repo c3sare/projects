@@ -4,6 +4,7 @@ import TicTacToe from './components/projects/TicTacToe';
 import Notes from './components/projects/Notes';
 
 import ProjectBoardWithButtons from './components/ProjectBoardWithButtons';
+import Timer from './components/projects/Timer';
 
 export interface Project {
   name: string;
@@ -28,6 +29,10 @@ const App = () => {
     {
       name: "Notatki",
       component: <Notes/>
+    },
+    {
+      name: "Stoper",
+      component: <Timer/>
     }
   ];
 

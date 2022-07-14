@@ -36,8 +36,7 @@ const Calculator = () => {
     const handleKeyDown = (event: KeyboardEvent) => {
       for (let i = 0; i < 10; i++) {
         if (event.key === `${i}`) {
-          const e = { target: { textContent: `${i}` } };
-          setScore(e);
+          setScore(`${i}`);
         }
       }
       if (event.key === ":") {
@@ -122,19 +121,19 @@ const Calculator = () => {
     score.current!.textContent = String(-Number(score.current!.textContent));
   };
 
-  const setScore = (e: React.MouseEvent<HTMLButtonElement> | any): void => {
+  const setScore = (value: string): void => {
     let summary = score.current!.textContent;
     if (newValue.current) {
       newValue.current = false;
-      score.current!.textContent = e.target!.textContent;
+      score.current!.textContent = value;
     } else if (summary!.length < 16) {
       if (summary!.indexOf(".") > -1) {
-        score.current!.textContent = summary + e.target.textContent;
+        score.current!.textContent = summary + value;
       } else if (Number(summary) === 0) {
-        if (Number(e.target.textContent) !== 0)
-          score.current!.textContent = e.target.textContent;
+        if (Number(value) !== 0)
+          score.current!.textContent = value;
       } else {
-        score.current!.textContent = summary + e.target.textContent;
+        score.current!.textContent = summary + value;
       }
     }
   };
@@ -188,7 +187,7 @@ const Calculator = () => {
       <div className="boxNumsReturn">
         <div className="nums">
           {nums.map((num, i) => (
-            <button key={i} onClick={(e) => setScore(e)}>
+            <button key={i} onClick={() => setScore(String(num))}>
               {num}
             </button>
           ))}

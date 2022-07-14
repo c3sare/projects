@@ -5,6 +5,7 @@ import Notes from './components/projects/Notes';
 
 import ProjectBoardWithButtons from './components/ProjectBoardWithButtons';
 import Timer from './components/projects/Timer';
+import ColorGenerator from './components/projects/ColorGenerator';
 
 export interface Project {
   name: string;
@@ -33,6 +34,10 @@ const App = () => {
     {
       name: "Stoper",
       component: <Timer/>
+    },
+    {
+      name: "Losowy Generator Kolorów",
+      component: <ColorGenerator/>
     }
   ];
 
